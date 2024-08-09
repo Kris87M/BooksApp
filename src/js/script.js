@@ -30,7 +30,25 @@
       /* add element to menu */
       booksContainer.appendChild(element);
     }
+    initActions();
   }
 
   render();
+
+  
+  function initActions() {
+    const favoriteBooks = [];
+    const images = document.querySelectorAll('.book__image');
+    console.log(images);
+    for (const img of images) {
+      img.addEventListener('dblclick', function (event) {
+        event.preventDefault();
+        img.classList.add('favorite');
+        const favoriteBook = img.getAttribute('data-id');
+        console.log(favoriteBook);
+        favoriteBooks.push(favoriteBook);
+        console.log(favoriteBooks);
+      });
+    }
+  }
 }
